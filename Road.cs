@@ -4,12 +4,22 @@
 // Purpose: Definition of Class Road
 
 using System;
+using System.Runtime.ConstrainedExecution;
 
 public class Road
 {
     private string name;
     private List<Stop> stops;
-    private TransportVehicle transportVehicle; 
+    private TransportVehicle transportVehicle;
+
+
+    public Stop this[int index] 
+    {
+        get
+        { return stops[index]; }
+        set
+        { stops[index] = value; }
+    }
     // Конструктор
     public Road(string name, List<Stop> stops, TransportVehicle transportVehicle)
     {

@@ -9,21 +9,26 @@ public class GPSMonitor
 {
     private string id;
     private bool status;
-
+    private string location; 
     // Конструктор
-    public GPSMonitor(string id, bool status)
+    public GPSMonitor(string id, bool status, string location)
     {
         this.id = id;
         this.status = status;
+        this.location = location;
     }
-
+     
     // Геттер и сеттер для id
     public string Id
     {
         get { return id; }
         set { id = value; }
     }
-
+    public string Location
+    {
+        get { return id; }
+        set { id = value; }
+    }
     // Геттер и сеттер для status
     public bool Status
     {
