@@ -3,6 +3,7 @@
 // Created: 18 травня 2025 р. 19:26:29
 // Purpose: Definition of Class TransportVehicle
 
+using Project_v2;
 using System;
 
 public class TransportVehicle
@@ -77,5 +78,8 @@ public class TransportVehicle
         set { currentRoad = value; }
     }
 
-
+    public void OpenTheDoor()
+    {
+        Service.StartWork();
+    }
 }

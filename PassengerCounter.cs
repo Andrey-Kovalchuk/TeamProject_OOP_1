@@ -9,6 +9,7 @@ public class PassengerCounter
 {
     private string id;
     private int count;
+    private int SumOfPassenger; 
 
     // Конструктор
     public PassengerCounter(string id, int count)
@@ -29,5 +30,9 @@ public class PassengerCounter
     {
         get { return count; }
         set { count = value; }
+    }
+    public void AddToCounter ()
+    {
+        count++;
     }
 }
