@@ -16,7 +16,16 @@ public class TransportVehicle
     private GPSMonitor gpsMonitor; // Агрегація 1:1
     private Road currentRoad; // Асоціація 1:1
 
-    // Оновлений конструктор
+    /// <summary>
+    /// Конструктор для створення нового екземпляра класу TransportVehicle.
+    /// </summary>
+    /// <param name="id">Унікальний ідентифікатор транспортного засобу.</param>
+    /// <param name="type">Тип транспортного засобу.</param>
+    /// <param name="plate">Номерний знак транспортного засобу.</param>
+    /// <param name="passengerCounter">Лічильник пасажирів.</param>
+    /// <param name="paymentValidator">Валідатор платежів.</param>
+    /// <param name="gpsMonitor">GPS-монітор.</param>
+    /// <param name="currentRoad">Поточний маршрут.</param>
     public TransportVehicle(
         long id,
         string type,
@@ -76,6 +85,18 @@ public class TransportVehicle
         get { return currentRoad; }
         set { currentRoad = value; }
     }
-
-
+    /// <summary>
+    /// Метод для відкриття дверей транспортного засобу.
+    /// </summary>
+    public void OpenTheDoor()
+    {
+        Service.OpenTheDoor();
+    }
+    /// <summary>
+    /// Метод для закриття дверей транспортного засобу.
+    /// </summary>
+    public void CloseTheDoor()
+    {
+        Service.CloseTheDoor();
+    }
 }

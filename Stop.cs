@@ -10,7 +10,11 @@ public class Stop
     private string name;
     private string location;
 
-    // Конструктор
+    /// <summary>
+    /// Конструктор для створення нового екземпляра класу Stop.
+    /// </summary>
+    /// <param name="name">Назва зупинки.</param>
+    /// <param name="location">Розташування зупинки.</param>
     public Stop(string name, string location)
     {
         this.name = name;

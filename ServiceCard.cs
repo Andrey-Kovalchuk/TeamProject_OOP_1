@@ -8,7 +8,10 @@ using System;
 public class ServiceCard
 {
    private string id;
-
+    /// <summary>
+    /// Конструктор для створення нового екземпляра класу ServiceCard.
+    /// </summary>
+    /// <param name="id">Унікальний ідентифікатор картки.</param>
     public ServiceCard(string id)
     {
         this.id = id;

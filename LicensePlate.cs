@@ -8,8 +8,11 @@ using System;
 public class LicensePlate
 {
     private string number;
-    
-    // Конструктор
+
+    /// <summary>
+    /// Конструктор для створення нового екземпляра класу LicensePlate.
+    /// </summary>
+    /// <param name="number">Номерний знак.</param>
     public LicensePlate(string number)
     {
         this.number = number;
