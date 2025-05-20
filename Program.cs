@@ -100,7 +100,7 @@ public class Program
     public void RideInRace()
     {
         int choice = 0;
-        ElectronicTicket ticket = new ElectronicTicket("12", "Passenger Ticket", 0);
+        ElectronicTicket ticket = new ElectronicTicket("12", "Passenger Ticket", 0, true);
         transportVehicle.OpenTheDoor();
         Console.WriteLine("Введіть кількість пасажирів, які зайшли:");
         int passengersIn = int.Parse(Console.ReadLine());
@@ -150,7 +150,9 @@ public class Program
     {
         Console.WriteLine("скільки грошей в білеті");
         float ballance= float.Parse(Console.ReadLine());
-        ElectronicTicket ticket = new ElectronicTicket("TCK001", "Passenger Ticket", ballance); // додати валідність квитка як поле 
+        Console.WriteLine("він валідний? (1 - Так, 0 - Ні)");
+        bool valid = int.Parse(Console.ReadLine()) == 1;
+        ElectronicTicket ticket = new ElectronicTicket("TCK001", "Passenger Ticket", ballance, valid); // додати валідність квитка як поле 
         bool isConcessionary = false;
         Console.WriteLine("Пасажир підносить квиток до валідатора.");
         Console.WriteLine("Введіть ID квитка:");
@@ -158,33 +160,47 @@ public class Program
         ticket.Id = ticketId;
         Console.WriteLine("Це пільговий квиток? (1 - Так, 0 - Ні)");
         isConcessionary = int.Parse(Console.ReadLine()) == 1;
-
-        if (isConcessionary)
+        if (ticket.Valid == true)
         {
-            Console.WriteLine("Пільговий квиток розпізнано. Реєструємо пільговий проїзд.");
-            transportVehicle.PaymentValidator.RegisterConcessionaryRide();
-        }
-        else
-        {
-
-            if (transportVehicle.PaymentValidator.ValidateTicket(ticket))
+            if (isConcessionary)
             {
-                if (ticket.Balance >= 15.0)
-                {
-                    Console.WriteLine("Оплата успішна. Дякуємо, що обираєте нас!");
-                    transportVehicle.PaymentValidator.AddPayment();
-                    ticket.Balance -= 15.0;
-                }
-                else
-                {
-                    Console.WriteLine("Недостатньо коштів на квитку.");
-                }
+                Console.WriteLine("Пільговий квиток розпізнано. Реєструємо пільговий проїзд.");
+                transportVehicle.PaymentValidator.RegisterConcessionaryRide();
             }
             else
             {
-                Console.WriteLine("Квиток недійсний або прострочений.");
+
+                if (transportVehicle.PaymentValidator.ValidateTicket(ticket))
+                {
+                    if (ticket.Balance >= 15.0)
+                    {
+                        Console.WriteLine("Оплата успішна. Дякуємо, що обираєте нас!");
+                        transportVehicle.PaymentValidator.AddPayment();
+                        ticket.Balance -= 15.0;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Недостатньо коштів на квитку.");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Квиток недійсний або прострочений.");
+                }
             }
         }
+        else
+        {
+            Console.WriteLine("Звернуться до кондуктора за відновлення валідності?");
+            Console.WriteLine("він валідний? (1 - Так, 0 - Ні)");
+            valid = int.Parse(Console.ReadLine()) == 1;
+            if (valid == true)
+            {
+                Console.WriteLine("кондуктор відновлює валідність квитка");
+                ticket.Valid = true; 
+            }
+        }
+       
 
         Console.WriteLine("Чи є технічна помилка валідатора? (1 - Так, 0 - Ні)");
         int validatorError = int.Parse(Console.ReadLine());

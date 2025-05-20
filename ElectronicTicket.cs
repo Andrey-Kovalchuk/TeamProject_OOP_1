@@ -10,15 +10,20 @@ public class ElectronicTicket
     private string id;
     private string type;
     private double balance;
-
+    private bool valid; 
     // Конструктор
-    public ElectronicTicket(string id, string type, double balance)
+    public ElectronicTicket(string id, string type, double balance, bool valid)
     {
         this.id = id;
         this.type = type;
         this.balance = balance;
+        this.valid = valid;
     }
-
+    public bool Valid
+    {
+        get { return valid; }
+        set { valid = value; }
+    }
     // Геттер и сеттер для id
     public string Id
     {
