@@ -8,9 +8,13 @@ namespace Project_v2
 {
     internal static class Service
     {
-     public static void StartWork()
+     public static void OpenTheDoor()
         {
             Console.WriteLine("двері відчиняютсья");
+        }
+        public static void CloseTheDoor()
+        {
+            Console.WriteLine("двері зачиняються");
         }
     }
 }

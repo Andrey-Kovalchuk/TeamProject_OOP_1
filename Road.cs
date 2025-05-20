@@ -44,4 +44,9 @@ public class Road
         get { return stops; }
         set { stops = value; }
     }
+    public TransportVehicle TransportVehicle
+    {
+        get { return transportVehicle; }
+        set { transportVehicle = value; }
+    }
 }

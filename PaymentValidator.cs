@@ -10,16 +10,18 @@ public class PaymentValidator
 {
     private string id;
     private bool status;
-    private int countMoney; 
-    private const int code = 9113; // Код для службової картки
-    // Конструктор
-    public PaymentValidator(string id, bool status, int countMoney)
+    private int totalPayments;
+    private int concessionaryRides;
+    private double totalRevenue;
+    private const int Password = 9113;
+    public PaymentValidator(string id, bool status, int totalPayments, int concessionaryRides, double totalRevenue)
     {
         this.id = id;
         this.status = status;
-        this.countMoney = countMoney;
+        this.totalPayments = totalPayments;
+        this.concessionaryRides = concessionaryRides;
+        this.totalRevenue = totalRevenue;
     }
-
     // Геттер и сеттер для id
     public string Id
     {
@@ -33,17 +35,48 @@ public class PaymentValidator
         get { return status; }
         set { status = value; }
     }
-    public int CountMoney
+
+    // Геттер и сеттер для totalPayments
+    public int TotalPayments
     {
-        get { return countMoney; }
-        set { countMoney = value; }
+        get { return totalPayments; }
+        set { totalPayments = value; }
     }
-    public void AddPaiment ()
+
+    // Геттер и сеттер для concessionaryRides
+    public int ConcessionaryRides
     {
-        countMoney += 15; 
+        get { return concessionaryRides; }
+        set { concessionaryRides = value; }
     }
-    public bool CheckValidateCart (int passwords) 
+
+    // Геттер и сеттер для totalRevenue
+    public double TotalRevenue
     {
-        return (passwords == code);
+        get { return totalRevenue; }
+        set { totalRevenue = value; }
+    }
+
+
+    public bool CheckValidateCart(int code)
+    {
+        return code == Password; 
+    }
+
+
+    public bool ValidateTicket(ElectronicTicket ticket)
+    {
+        return ticket != null && ticket.Balance >= 0;
+    }
+
+    public void AddPayment()
+    {
+        TotalPayments++;
+        TotalRevenue += 15.0;
+    }
+
+    public void RegisterConcessionaryRide()
+    {
+        ConcessionaryRides++;
     }
 }

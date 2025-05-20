@@ -35,4 +35,9 @@ public class PassengerCounter
     {
         count++;
     }
+    public void RemoveFromCounter()
+    {
+        if (Count > 0)
+            Count--;
+    }
 }

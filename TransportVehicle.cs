@@ -80,6 +80,10 @@ public class TransportVehicle
 
     public void OpenTheDoor()
     {
-        Service.StartWork();
+        Service.OpenTheDoor();
+    }
+    public void CloseTheDoor()
+    {
+        Service.CloseTheDoor();
     }
 }
