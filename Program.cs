@@ -67,7 +67,7 @@ class Program
         for (int i = 0; i < 5; i++)
         {
             Console.WriteLine("автобус прибув на зупинку " + stops[i].Name);
-            RideInRace();
+             RideInRace();
             Console.WriteLine("транспорт виїхав на наступну зупинку");
         }
        
